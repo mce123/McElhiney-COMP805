@@ -62,6 +62,23 @@ def run_restock_inventory():
     res = lab2.restock_inventory(inventory)
     print('lab2.restock_inventory({}) -> {}'.format(inventory, res))
 
+def run_filter_0_items():
+    """
+    Demo many uses of the function filter_0_items( )
+    """
+
+    inventory = {'pencil':10, 'pen':8, 'paper':7}
+    res = lab2.filter_0_items(inventory)
+    print('lab2.filter_0_items({}) -> {}'.format(inventory, res))
+
+    inventory = {'pencil':0, 'pen':-3, 'paper':-11}
+    res = lab2.filter_0_items(inventory)
+    print('lab2.filter_0_items({}) -> {}'.format(inventory, res))
+
+    inventory = {'pencil':0.5, 'pen':-3.2, 'paper':0.0}
+    res = lab2.filter_0_items(inventory)
+    print('lab2.filter_0_items({}) -> {}'.format(inventory, res))
+
 def main( ):
     """
     Wrapper function that calls all the testing functions
@@ -73,6 +90,9 @@ def main( ):
     print("")
 
     run_restock_inventory()
+    print("")
+
+    run_filter_0_items()
     print("")
 
 if __name__ == "__main__":

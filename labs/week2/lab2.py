@@ -43,6 +43,20 @@ def restock_inventory(inventory):
     Returns: updated dictionary where each inventory item is restocked
     """
     return_dict = {}
-    for key in inventory.keys():
+    for key, value in inventory.items():
         return_dict[key] = inventory[key] + 10
+    return return_dict
+
+def filter_0_items(inventory):
+    """
+    Removes items that have a value of 0 from a dictionary of inventories
+    inventory: dictionary with:
+    ** key: tring that is the name of the inventory item**
+    ** value: nteger that equals the number of that item currently on hand**
+    Returns: the same inventory_dict with any item that had 0 quantity removed
+    """
+    return_dict = {}
+    for key, value in inventory.items():
+        if inventory[key] != 0:
+            return_dict[key] = inventory[key]
     return return_dict
