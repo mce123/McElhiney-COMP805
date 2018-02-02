@@ -79,6 +79,23 @@ def run_filter_0_items():
     res = lab2.filter_0_items(inventory)
     print('lab2.filter_0_items({}) -> {}'.format(inventory, res))
 
+def run_average_grades():
+    """
+    Demo many uses of the function average_grades( )
+    """
+
+    grades = {'Michael':[100, 78, 88, 900/10], 'Daniel':[80, 95, 77, 64.0], 'Josh':[99, 89, 94, 66]}
+    res = lab2.average_grades(grades)
+    print('lab2.average_grades({}) -> {}'.format(grades, res))
+
+    grades = {'Michael':[5 * 20, 188 * .5, 88], 'Daniel':[80.5, .15, 66, 64.0], 'Josh':[99 + 1 * -2, 40/.5]}
+    res = lab2.average_grades(grades)
+    print('lab2.average_grades({}) -> {}'.format(grades, res))
+
+    grades = {'Michael':[78], 'Daniel':[90], 'Josh':[900/-9]}
+    res = lab2.average_grades(grades)
+    print('lab2.average_grades({}) -> {}'.format(grades, res))
+
 def main( ):
     """
     Wrapper function that calls all the testing functions
@@ -93,6 +110,9 @@ def main( ):
     print("")
 
     run_filter_0_items()
+    print("")
+
+    run_average_grades()
     print("")
 
 if __name__ == "__main__":

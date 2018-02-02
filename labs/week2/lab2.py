@@ -60,3 +60,22 @@ def filter_0_items(inventory):
         if inventory[key] != 0:
             return_dict[key] = inventory[key]
     return return_dict
+
+def average_grades(grades):
+    """
+    Takes grade values from a dictionary and averages them into a final grade
+    grades: a dictionary of grades with:
+    key: string of students name
+    value: list of integer grades received in class
+    Returns: dictionary that averages out the grades of each student
+    """
+    return_dict = {}
+    for student, grades in grades.items():
+        these_grades = 0
+        num_grades = 0
+        for grade in grades:
+            num_grades += 1
+            these_grades += grade
+        final_grade = these_grades / num_grades
+        return_dict[student] = final_grade
+    return return_dict
