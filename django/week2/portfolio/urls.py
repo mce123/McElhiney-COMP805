@@ -23,5 +23,6 @@ urlpatterns = [
     path(r'', views.home, name="home"),
     path(r'resume', views.resume, name="resume"),
     path(r'portfolio', views.portfolio, name="portfolio"),
+    path(r'contact', views.contact, name="contact"),
     re_path(r'^admin', admin.site.urls),
 ]

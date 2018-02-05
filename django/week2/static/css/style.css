@@ -22,3 +22,11 @@ h1 {
 .portfolio-banner {
     text-align: center;
 }
+.contact-content {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.contact-banner {
+    text-align: center;
+}
