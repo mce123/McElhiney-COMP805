@@ -4,12 +4,13 @@
   <head>
     <title>Homepage</title>
     <link rel='stylesheet' href="{% static 'css/style.css' %}" />
+
   </head>
   <body>
     <div id="container">
     <nav>
       <a href="{% url 'home' %}">Home</a> | 
-      <a href="">Resume</a> | 
+      <a href="{% url 'resume' %}">Resume</a> | 
       <a href="">Portfolio</a> | 
       <a href="">Contact</a>
     </nav>

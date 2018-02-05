@@ -7,3 +7,10 @@ def home(request):
     """
     context = {}
     return render(request, 'home.html', context)
+
+def resume(request):
+    """
+    Renders resume page.
+    """
+    context = {}
+    return render(request, 'resume.html', context)
