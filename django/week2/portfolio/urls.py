@@ -22,5 +22,6 @@ from . import views
 urlpatterns = [
     path(r'', views.home, name="home"),
     path(r'resume', views.resume, name="resume"),
+    path(r'portfolio', views.portfolio, name="portfolio"),
     re_path(r'^admin', admin.site.urls),
 ]

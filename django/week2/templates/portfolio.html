@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
   <div class="portfolio-content">
     <div class="portfolio-banner">
       <h1>Patrick R. McElhiney's Portfolio</h1>
       <hr>
-      <h4>The greatest genius in the world!!!</h4>
-      <a class='button' href="{% url 'contact' %}">Contact Me!</a>
     </div>
+    <a href="http://www.mce123.com" target="_blank"><img src="{% static 'images/portfolio1.jpg' %}" width="800" height="427"></a>
+    <br /><br >
+    <a href="http://www.patrickmcelhiney.com" target="_blank"><img src="{% static 'images/portfolio2.jpg' %}" width="800" height="427"></a>
+    <br /><br >
+    <a href="http://www.joeparksgarden.org" target="_blank"><img src="{% static 'images/portfolio3.jpg' %}" width="800" height="427"></a>
   </div>
 {% endblock %}

@@ -14,3 +14,10 @@ def resume(request):
     """
     context = {}
     return render(request, 'resume.html', context)
+
+def portfolio(request):
+    """
+    Renders portfolio page.
+    """
+    context = {}
+    return render(request, 'portfolio.html', context)
