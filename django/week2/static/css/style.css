@@ -1,0 +1,11 @@
+h1 {
+    color: blue;
+}
+.homepage-content {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.homepage-banner {
+    text-align: center;
+}
