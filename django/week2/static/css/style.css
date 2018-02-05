@@ -9,3 +9,8 @@ h1 {
 .homepage-banner {
     text-align: center;
 }
+.resume-content {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}

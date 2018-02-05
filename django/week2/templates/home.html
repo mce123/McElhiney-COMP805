@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
   <div class="homepage-content">
@@ -7,5 +8,10 @@
       <hr>
       <h4>The greatest genius in the world!!!</h4>
     </div>
+    <br />
+    <center>
+    <img src="{% static 'images/homepage.jpg' %}">
+    </center>
+
   </div>
 {% endblock %}
