@@ -15,20 +15,6 @@ class Migration(migrations.Migration):
             name='Education',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('institution_name', models.CharField(max_length=255)),
-                ('location', models.CharField(max_length=255)),
-                ('degree', models.CharField(max_length=255)),
-                ('major', models.CharField(max_length=255)),
-                ('gpa', models.FloatField()),
-            ],
-            options={
-                'ordering': ['institution_name'],
-            },
-        ),
-        migrations.CreateModel(
-            name='Experience',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=255)),
                 ('location', models.CharField(max_length=255)),
                 ('start_date', models.DateField()),
@@ -37,6 +23,20 @@ class Migration(migrations.Migration):
             ],
             options={
                 'ordering': ['title'],
+            },
+        ),
+        migrations.CreateModel(
+            name='Experience',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('institution_name', models.CharField(max_length=255)),
+                ('location', models.CharField(max_length=255)),
+                ('degree', models.CharField(max_length=255)),
+                ('major', models.CharField(max_length=255)),
+                ('gpa', models.FloatField()),
+            ],
+            options={
+                'ordering': ['institution_name'],
             },
         ),
     ]

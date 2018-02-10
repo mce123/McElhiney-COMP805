@@ -15,14 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path, re_path, include
+from django.urls import path, re_path
 
 from . import views
+app_name = "resume"
 
 urlpatterns = [
-    path(r'', views.home, name="home"),
-    path(r'resume/', include('resume.urls', namespace='resume')),
-    path(r'portfolio', views.portfolio, name="portfolio"),
-    path(r'contact', views.contact, name="contact"),
-    path(r'admin/', admin.site.urls, name="admin"),
+    path(r'', views.resume, name="index"),
 ]
