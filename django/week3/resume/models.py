@@ -25,3 +25,13 @@ class Experience(models.Model):
 
     class Meta:
         ordering = ['title']
+
+class Qualification(models.Model):
+    qual_type = models.CharField(max_length=255, null=False, blank=False)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.qual_type
+
+    class Meta:
+        ordering = ['qual_type']
