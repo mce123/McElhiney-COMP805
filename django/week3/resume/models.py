@@ -35,3 +35,14 @@ class Qualification(models.Model):
 
     class Meta:
         ordering = ['qual_type']
+
+class Certification(models.Model):
+    name = models.CharField(max_length=255, null=False, blank=False)
+    date_obtained = models.DateField()
+    status = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['-date_obtained']

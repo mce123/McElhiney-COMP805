@@ -9,17 +9,18 @@
 <p><strong>PROFILE</strong></p>
 <p>A highly self-motivated individual with strong leadership skills in business and marketing management, with expert level skills in information technology.</p>
 <p><strong>QUALIFICATIONS SUMMARY</strong></p>
-<ul>
-<li>Currently a full-time Master’s student at UNH Manchester, majoring in Information Technology (IT) with a 4.0 GPA.</li>
-<li>Graduating with honors in September 2018.</li>
-<li>Management experience with MCE123SM and Staples® in the field of Information Technology.</li>
-<li>Ability to keep IT department profitable and staffed with the correct employees.</li>
-<li>Nearly twenty years of experience in IT, including both Software Development and Hardware Implementations.</li>
-<li>Experienced Programmer in Python, Java, C#, PHP, Perl, JavaScript, jQuery, HTML/CSS.</li>
-<li>Familiar with Windows, Mac, Linux, and UNIX Operating Systems.</li>
-<li>Server Administration Experience, including with Amazon Web Services (AWS).</li>
-<li>Eight years of experience in the R&D industry with MCE123SM Technology Development.</li>
-<li>Background in Intellectual Property Law.</li>
+{% if qualification %}
+	{% for qual in qualification %}
+		<ul><b>{{qual.qual_type}}</b><br />
+			<ul>
+				{{qual.description|linebreaksbr}}<br />
+			</ul>
+		</ul>
+	{% endfor %}
+{% else %}
+	<ul>No Qualifications Defined!</ul>
+{% endif %}
+
 </ul>
 <p><strong>EMPLOYMENT HISTORY</strong></p>
 {% if experience %}
@@ -46,14 +47,14 @@
 	<ul>No Education Defined!</ul>
 {% endif %}
 <p><strong>OTHER TECHNICAL CERTIFICATIONS</strong></p>
-<ul>
-Staples Certified Computer Technician (2015)<br /><br />
-Microsoft Certified Professional #6983472 (2010)<br /><br />
-Cisco Certified Network Professional (CCNP) (2004) <i>[Expired]</i><br /><br />
-Cisco Certified Network Associate (CCNA) (2002) <i>[Expired]</i><br /><br />
-CompTIA A+ Certification (2001)<br /><br />
-</ul>
-
+{% if certification %}
+	{% for cert in certification %}
+		<ul><b>{{cert.name}}</b> ({{cert.date_obtained|date:"Y"}}) {% if cert.status %}<i>[{{cert.status}}]</i>{% endif %}<br />
+		</ul>
+	{% endfor %}
+{% else %}
+	<ul>No Certifications Defined!</ul>
+{% endif %}
 
   </div>
 {% endblock %}
