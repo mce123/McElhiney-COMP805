@@ -5,7 +5,8 @@ def home(request):
     """
     Renders home page.
     """
-    context = {}
+    title = "Patrick R. McElhiney's Homepage"
+    context = {'title':title}
     return render(request, 'home.html', context)
 
 def resume(request):
@@ -19,12 +20,14 @@ def portfolio(request):
     """
     Renders portfolio page.
     """
-    context = {}
+    title = "Patrick R. McElhiney's Portfolio"
+    context = {'title':title}
     return render(request, 'portfolio.html', context)
 
 def contact(request):
     """
     Renders contact page.
     """
-    context = {}
+    title = "Contact Patrick R. McElhiney"
+    context = {'title':title}
     return render(request, 'contact.html', context)

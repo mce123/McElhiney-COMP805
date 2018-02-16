@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block header %}
+<title>{{ title }}</title>
+{% endblock %}
+
 {% block content %}
   <div class="homepage-content">
     <div class="homepage-banner">
-      <h1>Patrick R. McElhiney's Homepage</h1>
+      <h1>{{ title }}</h1>
       <hr>
       <h4>The greatest genius in the world!!!</h4>
     </div>

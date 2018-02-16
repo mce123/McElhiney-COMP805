@@ -1,15 +1,32 @@
 {% extends 'base.html' %}
 
+{% block header %}
+<title>{{ title }}</title>
+{% endblock %}
+
+{% block selector %}
+ : <select id="dynamic_select" onchange="if (this.value) window.location.href=this.value">
+<optgroup label="Selected:">
+<option value="" selected>{{ selected_email }}</option>
+</optgroup>
+<optgroup label="All Resumes:">
+{% for resume in resumes %}<option value="/resume/{{ resume.email }}/">{{ resume.first_name }} {{ resume.last_name }}</option>{% endfor %}
+</optgroup>
+</select>
+{% endblock %}
+
 {% block content %}
   <div class="resume-content">
     <div class="resume-banner">
-      <h1>Patrick R. McElhiney's Resume</h1>
+      <h1>{{ title }}</h1>
       <hr>
     </div>
+{% if profile_statement %}
 <p><strong>PROFILE</strong></p>
-<p>A highly self-motivated individual with strong leadership skills in business and marketing management, with expert level skills in information technology.</p>
-<p><strong>QUALIFICATIONS SUMMARY</strong></p>
+<p>{{ profile_statement }}</p>
+{% endif %}
 {% if qualification %}
+<p><strong>QUALIFICATIONS SUMMARY</strong></p>
 	{% for qual in qualification %}
 		<ul><b>{{qual.qual_type}}</b><br />
 			<ul>
@@ -18,7 +35,7 @@
 		</ul>
 	{% endfor %}
 {% else %}
-	<ul>No Qualifications Defined!</ul>
+	<!--No Qualifications Defined!-->
 {% endif %}
 
 </ul>
@@ -34,7 +51,6 @@
 {% else %}
 	<ul>No Experience Defined!</ul>
 {% endif %}
-
 <p><strong>EDUCATION</strong></p>
 {% if education %}
 	{% for school in education %}
@@ -46,14 +62,14 @@
 {% else %}
 	<ul>No Education Defined!</ul>
 {% endif %}
-<p><strong>OTHER TECHNICAL CERTIFICATIONS</strong></p>
 {% if certification %}
+<p><strong>OTHER TECHNICAL CERTIFICATIONS</strong></p>
 	{% for cert in certification %}
 		<ul><b>{{cert.name}}</b> ({{cert.date_obtained|date:"Y"}}) {% if cert.status %}<i>[{{cert.status}}]</i>{% endif %}<br />
 		</ul>
 	{% endfor %}
 {% else %}
-	<ul>No Certifications Defined!</ul>
+	<!--No Certifications Defined!-->
 {% endif %}
 
   </div>

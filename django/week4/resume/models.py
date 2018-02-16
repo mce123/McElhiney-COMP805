@@ -5,6 +5,7 @@ class Resume(models.Model):
     middle_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=False, blank=False)
     email = models.CharField(max_length=255, null=False, blank=False)
+    profile_statement = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.email
@@ -17,6 +18,26 @@ class Resume(models.Model):
         Returns the full name of the first Resume model object self. i.e. Patrick McElhiney
         '''
         return self.first_name + " " + self.last_name
+
+    def get_full_name_wmi(self):
+        '''
+        Returns the full name with middle initial of the first Resume model object self. i.e. Patrick R. McElhiney
+        '''
+        try:
+            if self.middle_name != None:
+                return self.first_name + " " + self.middle_name[0] + ". " + self.last_name
+        except:
+            return self.first_name + " " + self.last_name
+
+    def get_full_name_wmn(self):
+        '''
+        Returns the full name with middle name of the first Resume model object self. i.e. Patrick Russell McElhiney
+        '''
+        try:
+            if self.middle_name != None:
+                return self.first_name + " " + self.middle_name + " " + self.last_name
+        except:
+            return self.first_name + " " + self.last_name
 
     def get_last_name_first_name(self):
         '''

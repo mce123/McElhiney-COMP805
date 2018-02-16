@@ -22,4 +22,5 @@ app_name = "resume"
 
 urlpatterns = [
     path(r'', views.resume, name="index"),
+    path(r'<get_id>/', views.by_id, name="by_id"),
 ]

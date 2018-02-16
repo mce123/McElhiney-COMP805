@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 
+{% block header %}
+<title>{{ title }}</title>
+{% endblock %}
+
 {% block content %}
   <div class="contact-content">
     <div class="contact-banner">
-      <h1>Contact Patrick R. McElhiney</h1>
+      <h1>{{ title }}</h1>
       <hr>
       <h4>84 Nuthatch Loop</h4>
       <h4>Barrington, NH 03825</h4>
