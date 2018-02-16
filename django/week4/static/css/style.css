@@ -1,0 +1,32 @@
+h1 {
+    color: blue;
+}
+.homepage-content {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.homepage-banner {
+    text-align: center;
+}
+.resume-content {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.portfolio-content {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.portfolio-banner {
+    text-align: center;
+}
+.contact-content {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.contact-banner {
+    text-align: center;
+}
