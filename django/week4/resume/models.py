@@ -17,7 +17,7 @@ class Resume(models.Model):
         '''
         Returns the full name of the first Resume model object self. i.e. Patrick McElhiney
         '''
-        return self.first_name + " " + self.last_name
+        return "{} {}".format(self.first_name,self.last_name)
 
     def get_full_name_wmi(self):
         '''
@@ -25,9 +25,9 @@ class Resume(models.Model):
         '''
         try:
             if self.middle_name != None:
-                return self.first_name + " " + self.middle_name[0] + ". " + self.last_name
+                return "{} {}. {}".format(self.first_name,self.middle_name[0],self.last_name)
         except:
-            return self.first_name + " " + self.last_name
+            return "{} {}".format(self.first_name,self.last_name)
 
     def get_full_name_wmn(self):
         '''
@@ -35,15 +35,21 @@ class Resume(models.Model):
         '''
         try:
             if self.middle_name != None:
-                return self.first_name + " " + self.middle_name + " " + self.last_name
+                return "{} {} {}".format(self.first_name,self.middle_name,self.last_name)
         except:
-            return self.first_name + " " + self.last_name
+            return "{} {}".format(self.first_name,self.last_name)
 
     def get_last_name_first_name(self):
         '''
         Returns the full name - last_name, first_name of the Resume model object self. i.e. McElhiney, Patrick
         '''
-        return self.last_name + ", " + self.first_name
+        return "{}, {}".format(self.last_name,self.first_name)
+
+    def get_profile_statement(self):
+        '''
+        Returns the profile_statement of the Resume model object self.
+        '''
+        return self.profile_statement
 
     def get_experience(self):
         '''

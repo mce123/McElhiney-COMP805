@@ -1,76 +1,59 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<title>{{ title }}</title>
+<title>{{ resume_object.get_full_name }}'s Resume</title>
 {% endblock %}
 
 {% block selector %}
  : <select id="dynamic_select" onchange="if (this.value) window.location.href=this.value">
-<optgroup label="Selected:">
-<option value="" selected>{{ selected_email }}</option>
-</optgroup>
-<optgroup label="All Resumes:">
-{% for resume in resumes %}<option value="/resume/{{ resume.email }}/">{{ resume.first_name }} {{ resume.last_name }}</option>{% endfor %}
-</optgroup>
+{% for resume in resumes %}<option value="/resume/{{ resume.id }}/">{{ resume.first_name }} {{ resume.last_name }}</option>{% endfor %}
 </select>
 {% endblock %}
 
 {% block content %}
+{% if resume_object %}
   <div class="resume-content">
     <div class="resume-banner">
-      <h1>{{ title }}</h1>
+      <h1>{{ resume_object.get_full_name }}'s Resume</h1>
       <hr>
     </div>
-{% if profile_statement %}
+
 <p><strong>PROFILE</strong></p>
-<p>{{ profile_statement }}</p>
-{% endif %}
-{% if qualification %}
+<p>{{ resume_object.get_profile_statement }}</p>
+
 <p><strong>QUALIFICATIONS SUMMARY</strong></p>
-	{% for qual in qualification %}
+	{% for qual in resume_object.get_qualification %}
 		<ul><b>{{qual.qual_type}}</b><br />
 			<ul>
 				{{qual.description|linebreaksbr}}<br />
 			</ul>
 		</ul>
 	{% endfor %}
-{% else %}
-	<!--No Qualifications Defined!-->
-{% endif %}
 
-</ul>
 <p><strong>EMPLOYMENT HISTORY</strong></p>
-{% if experience %}
-	{% for work in experience %}
+
+	{% for work in resume_object.get_experience %}
 		<ul><b>{{work.title}}</b>, {{work.location}} ({{work.start_date|date:"M-Y"}}-{{work.end_date|date:"M-Y"}})<br />
 			<ul>
 				{{work.description|linebreaksbr}}<br />
 			</ul>
 		</ul>
 	{% endfor %}
-{% else %}
-	<ul>No Experience Defined!</ul>
-{% endif %}
+
 <p><strong>EDUCATION</strong></p>
-{% if education %}
-	{% for school in education %}
+	{% for school in resume_object.get_education %}
 		<ul><b>{{school.institution_name}}</b>, {{school.location}}<br />
 		Degree: {{school.degree}}<br />
 		Major: {{school.major}}, GPA: {{school.gpa}}
 		</ul>
 	{% endfor %}
-{% else %}
-	<ul>No Education Defined!</ul>
-{% endif %}
-{% if certification %}
+
 <p><strong>OTHER TECHNICAL CERTIFICATIONS</strong></p>
-	{% for cert in certification %}
+	{% for cert in resume_object.get_certification %}
 		<ul><b>{{cert.name}}</b> ({{cert.date_obtained|date:"Y"}}) {% if cert.status %}<i>[{{cert.status}}]</i>{% endif %}<br />
 		</ul>
 	{% endfor %}
-{% else %}
-	<!--No Certifications Defined!-->
-{% endif %}
 
+{% endif %}
   </div>
 {% endblock %}
