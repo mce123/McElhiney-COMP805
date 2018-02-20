@@ -73,25 +73,25 @@ class ResumeTestCase(TestCase):
 
     def test_get_experience(self):
         '''
-        Tests that the Resume.get_experience(resume) is an object of model Experience
+        Tests that the Resume.get_experience(resume) is equal to self.resume.experience_set.all()
         '''
-        self.assertIsNotNone(Resume.get_experience(self.resume))
+        self.assertEqual(list(Resume.get_experience(self.resume)), list(self.resume.experience_set.all()))
 
     def test_get_education(self):
         '''
-        Tests that the Resume.get_education(resume) is an object of model Education
+        Tests that the Resume.get_education(resume) is equal to self.resume.education_set.all()
         '''
-        self.assertIsNotNone(Resume.get_education(self.resume))
+        self.assertEqual(list(Resume.get_education(self.resume)), list(self.resume.education_set.all()))
 
     def test_get_qualification(self):
         '''
-        Tests that the Resume.get_qualification(resume) is an object of model Qualification
+        Tests that the Resume.get_qualification(resume) is equal to self.resume.qualification_set.all()
         '''
-        self.assertIsNotNone(Resume.get_qualification(self.resume))
+        self.assertEqual(list(Resume.get_qualification(self.resume)), list(self.resume.qualification_set.all()))
 
     def test_get_certification(self):
         '''
-        Tests that the Resume.get_certification(resume) is an object of model Certification
+        Tests that the Resume.get_certification(resume) is equal to self.resume.certification_set.all()
         '''
-        self.assertIsNotNone(Resume.get_certification(self.resume))
+        self.assertEqual(list(Resume.get_certification(self.resume)), list(self.resume.certification_set.all()))
 
