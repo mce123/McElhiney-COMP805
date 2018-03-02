@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Lab 6</title>
+
+	<style>
+		li {
+			list-style: none;
+		}
+
+		.centered {
+			text-align: center;
+		}
+
+		.problem {
+			text-size: 1.5em;
+			font-weight: 700;
+			padding: 10px 20px;
+		}
+
+	</style>
+<body>
+	<div class="header centered">
+		<h1>Welcome To Lab 6</h1>
+		<p><small>It's good to see you again, you like nice today.</small></p>
+
+		<h3>Instructions</h3>
+		<p>Read, and then do. It's that simple.</p>
+		<p>Add to workspace/labs/week6 and push to git. You get me?</p>
+	</div>
+
+	<div id="prob1">
+		<p class='problem'>1. When I click the button below, it should change from "click me!" to "I was clicked!"</p>
+		<button type="button" id="prob1button" onclick="change_button_text();">Click Me!</button>
+	</div>
+
+	<div id="prob2">
+		<p class='problem'>2. There are two buttons below. When a button is clicked, the other
+			 bottom should appear and the button that was clicked should disappear.</p>
+		<button id="prob2button1" onclick="change_button_vis(1);" style="display:block;">Button A: Show B</button>
+		<button id="prob2button2" onclick="change_button_vis(2);" style="display: none;">Button B: Show A</button>
+	</div>
+
+	<div id="prob3">
+		<p class='problem'>3. My favorite color is is pink. When I click the button below. I want
+			this header to change to my favorite color</p>
+		<button onclick="change_color();">Pink Is My Favorite Color</button>
+	</div>
+
+	<div id="prob4">
+		<p class='problem'>4. I like to say hi to people. There is an unorded list below and a button. When I click the button,
+			I want another list item to appear greeting a new person.</p>
+		<button onclick="show_greeting();">Say Hi!</button>
+		<ul id="prob4ul"></ul>
+	</div>
+
+	<div id="prob5">
+		<p class='problem'>5. I like to browse the web. But I'm a nerd, and only use the console.
+			There is a text box and button below. I want to put a url into the text box, click the button, and see the response in the console.</p>
+		<input type="text" id="prob5text">
+		<button onclick="get_http();">Fetch!</button>
+	</div>
+
+	<div id="prob6">
+		<p class='problem'>6. I like my data like I like my news...fake. Fill the empty ul below with some fake data from https://jsonplaceholder.typicode.com/ when I click the fetch button.</p>
+		<button onclick="get_fake_news();">Fetch!</button>
+		<ul id="prob6ul"></ul>
+	</div>
+
+<script>
+    function change_button_text() {
+        document.getElementById('prob1button').innerHTML = "I was clicked!";
+    }
+    function change_button_vis(button_id) {
+       button1 = document.getElementById("prob2button1");
+       button2 = document.getElementById("prob2button2");
+        if (button_id == 1) {
+            button1.style.display = 'none';
+            button2.style.display = 'block';
+        }
+        if (button_id == 2) {
+            button1.style.display = 'block';
+            button2.style.display = 'none';
+        }
+    }
+    function change_color() {
+        document.getElementById("prob3").style.backgroundColor = "pink";
+    }
+    var person_num = 1;
+    function show_greeting() {
+        var greeting = "Hello, New Person #" + person_num + "!";
+        var ul = document.getElementById("prob4ul");
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(greeting));
+        ul.appendChild(li);
+        person_num++;
+    }
+    function strip_html(html)
+    {
+        return html;
+    }
+    function isArray(obj)
+    {
+        if (obj instanceof Array) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function isObject(obj)
+    {
+        if (obj instanceof Object) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function get_http() {
+        var url = document.getElementById("prob5text").value;
+        var response_type = null;
+        var text = null;
+        fetch(url)
+            .then(response => {
+                response_type = response.headers.get("content-type");
+                return_response = response.text();
+                return return_response;
+            })
+            .then(return_response => {
+                if (response_type.indexOf('json') >= 0) {
+                    try {
+                        const data = JSON.parse(return_response);
+                        console.log("%c JSON Response from " + url + ": \n", "background: blue; color: yellow; font-size: large");
+                        console.log(data);
+                        if (isArray(data)) {
+                            console.log("%c JSON Array Found:\n", "background: blue; color: yellow; font-size: large");
+                            for (var i = 0; i < data.length; i++) {
+                                console.log(data[i]);
+                            }
+                        } else if (isObject(data)) {
+                            console.log("%c JSON Object Found:\n", "background: blue; color: yellow; font-size: large");
+                            console.log(data.size);
+                        }
+                    } catch (error) {
+                        console.log("error");
+                    }
+                }
+                if (response_type.indexOf('text') >= 0) {
+                    text = return_response;
+                    if (text.indexOf('html') >= 0) {
+                        text = strip_html(text);
+                        console.log("%c HTML Response from " + url + ": \n", "background: green; color: yellow; font-size: large");
+                        console.log(text);
+                    } else {
+                        console.log("%c Text Response from " + url + ": \n", "background: red; color: yellow; font-size: large");
+                        console.log(text);
+                    }
+                }
+            });
+    }
+    var fake_news_num = 1;
+    function get_fake_news() {
+        fetch('https://jsonplaceholder.typicode.com/posts/' + fake_news_num)
+        .then(response => response.json())
+        .then(json => post_fake_news(json))
+        if (fake_news_num < 100) {
+            fake_news_num++;
+        } else {
+            fake_news_num = 1;
+        }
+    }
+    function createHTMLNode(htmlCode, tooltip) {
+        // create html node
+        var htmlNode = document.createElement('span');
+        htmlNode.innerHTML = htmlCode
+        htmlNode.className = 'treehtml';
+        htmlNode.setAttribute('title', tooltip);
+        return htmlNode;
+    }
+    function post_fake_news(json) {
+        var ul = document.getElementById("prob6ul");
+        var li = document.createElement("li");
+        var li_contents = createHTMLNode("<font color='blue'><b>" + json.title + "</b></font><br /><font color='green'>" + json.body + "</font><br /><br />", json.title);
+        li.appendChild(li_contents);
+        ul.appendChild(li);
+    }
+</script>
+</body>
+
+</html>

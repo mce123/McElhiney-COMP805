@@ -43,7 +43,11 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
+<<<<<<< HEAD
 *,cover
+=======
+*.cover
+>>>>>>> d5e4c09a14a21b24abd99ab274c3e7cdaa387d1a
 .hypothesis/
 
 # Translations
@@ -62,7 +66,10 @@ instance/
 .scrapy
 
 # Sphinx documentation
+<<<<<<< HEAD
 docs/_build/
+=======
+>>>>>>> d5e4c09a14a21b24abd99ab274c3e7cdaa387d1a
 
 # PyBuilder
 target/
@@ -76,16 +83,39 @@ target/
 # celery beat schedule file
 celerybeat-schedule
 
+<<<<<<< HEAD
+=======
+# SageMath parsed files
+*.sage.py
+
+>>>>>>> d5e4c09a14a21b24abd99ab274c3e7cdaa387d1a
 # dotenv
 .env
 
 # virtualenv
+<<<<<<< HEAD
 .venv/
+=======
+.venv
+>>>>>>> d5e4c09a14a21b24abd99ab274c3e7cdaa387d1a
 venv/
 ENV/
 
 # Spyder project settings
 .spyderproject
+<<<<<<< HEAD
 
 # Rope project settings
 .ropeproject
+=======
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+>>>>>>> d5e4c09a14a21b24abd99ab274c3e7cdaa387d1a
